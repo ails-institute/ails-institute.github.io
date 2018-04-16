@@ -31,7 +31,7 @@ scene.add(galaxy);
 var loader = new THREE.TextureLoader();
 loader.crossOrigin = "";
 var dotTexture = loader.load("img/dotTexture.png");
-var dotsAmount = 8000;
+var dotsAmount = 5000;
 var dotsGeometry = new THREE.Geometry();
 var positions = new Float32Array(dotsAmount * 3);
 
