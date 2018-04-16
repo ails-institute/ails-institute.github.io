@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>ails.institute</title>
+		<meta name="description" content="Distributed institute for artificial intelligence in life sciences" />
+		<meta name="keywords" content="artificial intelligence, AI, life science, science, research, institute" />
+		<meta name="author" content="ails.institute" />
+		<link rel="shortcut icon" href="favicon.png">
+		<link href="https://fonts.googleapis.com/css?family=Barlow:400,500,700|Playfair+Display" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/ails-front.css" />
+		<!--<link rel="stylesheet" type="text/css" href="pater/pater.css" />-->
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this website that supports CSS Variables.");</script>
+	</head>
+	<body class="ails-front">
+		<svg class="hidden">
+			<symbol id="icon-arrow" viewBox="0 0 24 24">
+				<title>arrow</title>
+				<polygon points="6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2 10.2,7.2 9,6 3.1,12 9,18 10.2,16.8 "/>
+			</symbol>
+			<symbol id="icon-email" viewBox="0 0 40 40">
+			<title>email</title>
+				<path d="m 20.069533,4.9504403 c -8.728561,0 -15.8043941,7.0758317 -15.8043941,15.8043927 0,8.728564 7.0758331,15.804397 15.8043941,15.804397 8.728565,0 15.804393,-7.075833 15.804393,-15.804397 0,-8.728561 -7.075828,-15.8043926 -15.804393,-15.8043926 z m 7.120318,8.7802207 -7.126171,5.633677 -7.35797,-5.633677 14.484141,0 z m 0.733148,14.04835 -15.95073,0 0,-11.66906 7.352558,5.576902 c 0.197112,0.150729 0.488763,0.226095 0.723926,0.226095 0.240725,0 0.449693,-0.07901 0.649006,-0.236482 l 7.22524,-5.747532 0,11.850077 z"
+     id="path3" opacity="0.5"/>
+			</symbol>
+			<symbol id="icon-github" viewBox="0 0 40 40">
+				<title>github</title>
+				<path d="m 20.506686,3.8830949 c -9,0 -16.2999999,7.3000001 -16.2999999,16.3000001 0,7.2 4.7,13.3 11.0999999,15.5 0.8,0.1 1.1,-0.4 1.1,-0.8 0,-0.4 0,-1.4 0,-2.8 -4.5,1 -5.5,-2.2 -5.5,-2.2 -0.7,-1.9 -1.7999999,-2.4 -1.7999999,-2.4 -1.5,-1 0.1,-1 0.1,-1 1.5999999,0.1 2.4999999,1.7 2.4999999,1.7 1.5,2.5 3.8,1.8 4.7,1.4 0.1,-1.1 0.6,-1.8 1,-2.2 -3.6,-0.4 -7.4,-1.8 -7.4,-8.1 0,-1.8 0.6,-3.2 1.7,-4.4 -0.1,-0.3 -0.7,-2 0.2,-4.2 0,0 1.4,-0.4 4.5,1.7 1.3,-0.4 2.7,-0.5 4.1,-0.5 1.4,0 2.8,0.2 4.1,0.5 3.1,-2.1 4.5,-1.7 4.5,-1.7 0.9,2.2 0.3,3.9 0.2,4.3 1,1.1 1.7,2.6 1.7,4.4 0,6.3 -3.8,7.6 -7.4,8 0.6,0.5 1.1,1.5 1.1,3 0,2.2 0,3.9 0,4.5 0,0.4 0.3,0.9 1.1,0.8 6.5,-2.2 11.1,-8.3 11.1,-15.5 -0.1,-9 -7.4,-16.3000001 -16.4,-16.3000001 z" opacity="0.5"/>
+			</symbol>
+		</svg>
+		<main>
+				<header class="ails-header">
+					<div class="ails-links">
+						<a class="github" href="https://github.com/ails-institute/" title="Projects comming soon to GitHub"><svg class="icon icon--github"><use xlink:href="#icon-github"></use></svg></a>
+						<a class="email" href="https://github.com/ails-institute/" title="Members email access"><svg class="icon icon--email"><use xlink:href="#icon-email"></use></svg></a>
+					</div>
+				</header>
+			<div class="content">
+				<canvas class="scene scene--full" id="scene"></canvas>
+				<script type="x-shader/x-vertex" id="wrapVertexShader">
+					attribute float size;
+					attribute vec3 color;
+					varying vec3 vColor;
+					void main() {
+						vColor = color;
+						vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+						gl_PointSize = size * ( 350.0 / - mvPosition.z );
+						gl_Position = projectionMatrix * mvPosition;
+					}
+				</script>
+				<script type="x-shader/x-fragment" id="wrapFragmentShader">
+					varying vec3 vColor;
+					uniform sampler2D texture;
+					void main(){
+						vec4 textureColor = texture2D( texture, gl_PointCoord );
+						if ( textureColor.a < 0.3 ) discard;
+						vec4 color = vec4(vColor.xyz, 1.0) * textureColor;
+						gl_FragColor = color;
+					}
+				</script>
+				<div class="content__inner">
+					<h2 class="content__title">ails.institute</h2>
+					<h3 class="content__subtitle">Artificial Intelligence for Life Sciences</h2>
+				</div>
+			</div>
+		</main>
+		<script src="js/ails-base.js"></script>
+		<script src="js/three.min.js"></script>
+		<script src="js/TweenMax.min.js"></script>
+		<script src="js/ails-front.js"></script>
+	</body>
+</html>
