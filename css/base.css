@@ -64,8 +64,8 @@ a:focus {
 /* Icons */
 .icon {
 	display: block;
-	width: 2em;
-	height: 2em;
+	width: 3em;
+	height: 3em;
 	margin: 0 auto;
 	fill: currentColor;
 }
