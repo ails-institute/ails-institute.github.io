@@ -46,7 +46,7 @@
 					void main() {
 						vColor = color;
 						vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
-						gl_PointSize = size * ( 350.0 / - mvPosition.z );
+						gl_PointSize = size * ( 150.0 / - mvPosition.z );
 						gl_Position = projectionMatrix * mvPosition;
 					}
 				</script>
@@ -72,5 +72,6 @@
 		<script src="js/three.min.js"></script>
 		<script src="js/TweenMax.min.js"></script>
 		<script src="js/ails-front.js"></script>
+		<script src="js/OrbitControls.js"></script>
 	</body>
 </html>
