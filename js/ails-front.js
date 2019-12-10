@@ -31,7 +31,7 @@ scene.add(galaxy);
 var loader = new THREE.TextureLoader();
 loader.crossOrigin = "";
 var dotTexture = loader.load("img/dotTexture.png");
-var dotsAmount = 5000;
+var dotsAmount = 500;
 var dotsGeometry = new THREE.Geometry();
 var positions = new Float32Array(dotsAmount * 3);
 
@@ -130,7 +130,7 @@ function render(a) {
     var i;
     dotsGeometry.verticesNeedUpdate = true;
     segmentsGeom.verticesNeedUpdate = true;
-    
+
     raycaster.setFromCamera( mouse, camera );
     var intersections = raycaster.intersectObjects([wrap]);
     hovered = [];
