@@ -11,7 +11,7 @@
 
 .content__title {
 	font-family: 'Playfair Display', serif;
-	font-size: 10vw;
+	font-size: 6vw;
 	font-weight: normal;
 	color: var(--color-title);
 	text-align: center;
@@ -20,7 +20,7 @@
 }
 
 .content__subtitle {
-	font-size: 1.25em;
+	font-size: 0.80em;
 	background: var(--color-subtitle-bg);
 	color: var(--color-subtitle);
 	padding: 0.45em 0.5em;
