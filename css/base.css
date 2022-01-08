@@ -125,11 +125,7 @@ main {
 	grid-area: header;
 	justify-self: start;
 }
-/* Footer */
-.ails-footer {
-	padding: 1em;
-	font-size:0.75em;
-}
+
 .codrops-header__title {
 	font-size: 1em;
 	font-weight: 500;
